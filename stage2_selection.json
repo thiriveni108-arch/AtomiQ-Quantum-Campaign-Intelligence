@@ -1,0 +1,480 @@
+{
+  "mode": "official",
+  "official": true,
+  "top_10_inputs": [
+    {
+      "customer_id": "C0079",
+      "predicted_probability": 0.49788427319880246,
+      "contact_cost": 3,
+      "expected_deposit_value": 24.0,
+      "capacity_units": 3
+    },
+    {
+      "customer_id": "C0088",
+      "predicted_probability": 0.463157131470474,
+      "contact_cost": 2,
+      "expected_deposit_value": 22.0,
+      "capacity_units": 1
+    },
+    {
+      "customer_id": "C0031",
+      "predicted_probability": 0.44528503686476406,
+      "contact_cost": 2,
+      "expected_deposit_value": 13.0,
+      "capacity_units": 1
+    },
+    {
+      "customer_id": "C0202",
+      "predicted_probability": 0.4007035067501289,
+      "contact_cost": 4,
+      "expected_deposit_value": 26.0,
+      "capacity_units": 3
+    },
+    {
+      "customer_id": "C0345",
+      "predicted_probability": 0.3884094241404225,
+      "contact_cost": 4,
+      "expected_deposit_value": 27.0,
+      "capacity_units": 2
+    },
+    {
+      "customer_id": "C0258",
+      "predicted_probability": 0.37093636645407146,
+      "contact_cost": 1,
+      "expected_deposit_value": 24.0,
+      "capacity_units": 4
+    },
+    {
+      "customer_id": "C0359",
+      "predicted_probability": 0.3595694111759626,
+      "contact_cost": 1,
+      "expected_deposit_value": 14.0,
+      "capacity_units": 2
+    },
+    {
+      "customer_id": "C0293",
+      "predicted_probability": 0.3410600656268966,
+      "contact_cost": 4,
+      "expected_deposit_value": 29.0,
+      "capacity_units": 4
+    },
+    {
+      "customer_id": "C0112",
+      "predicted_probability": 0.3279633682841121,
+      "contact_cost": 4,
+      "expected_deposit_value": 26.0,
+      "capacity_units": 1
+    },
+    {
+      "customer_id": "C0339",
+      "predicted_probability": 0.31136476385132905,
+      "contact_cost": 1,
+      "expected_deposit_value": 26.0,
+      "capacity_units": 3
+    }
+  ],
+  "selected_customers": [
+    {
+      "customer_id": "C0079",
+      "predicted_probability": 0.49788427319880246
+    },
+    {
+      "customer_id": "C0088",
+      "predicted_probability": 0.463157131470474
+    },
+    {
+      "customer_id": "C0202",
+      "predicted_probability": 0.4007035067501289
+    },
+    {
+      "customer_id": "C0345",
+      "predicted_probability": 0.3884094241404225
+    },
+    {
+      "customer_id": "C0258",
+      "predicted_probability": 0.37093636645407146
+    },
+    {
+      "customer_id": "C0339",
+      "predicted_probability": 0.31136476385132905
+    }
+  ],
+  "exact": {
+    "status": "optimal",
+    "best": {
+      "bits": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "selected_ids": [
+        "C0079",
+        "C0088",
+        "C0202",
+        "C0345",
+        "C0258",
+        "C0339"
+      ],
+      "objective": 45.041981731448715,
+      "total_cost": 15,
+      "total_capacity": 16,
+      "selected_count": 6,
+      "feasible": true
+    },
+    "enumerated_combinations": 210,
+    "feasible_combinations": 210,
+    "runtime_seconds": 0.0008515000808984041
+  },
+  "best_quantum_result": {
+    "solver": "Cardinality QAOA",
+    "depth": 2,
+    "seed": 42,
+    "exact_objective": 45.041981731448715,
+    "best_measured_feasible_objective": 45.041981731448715,
+    "absolute_optimality_gap": 0.0,
+    "relative_optimality_gap": 0.0,
+    "feasible_shot_probability": 1.0,
+    "exact_optimum_sampling_probability": 0.0234375,
+    "circuit_depth": 12,
+    "gate_counts": "{\"rxx\": 20, \"ryy\": 20, \"measure\": 10, \"x\": 6, \"diagonal\": 2}",
+    "total_qubits": 10,
+    "circuit_evaluations": 7,
+    "optimizer_iterations": 6,
+    "runtime_seconds": 0.9432251000544056,
+    "best_selected_ids": [
+      "C0079",
+      "C0088",
+      "C0202",
+      "C0345",
+      "C0258",
+      "C0339"
+    ],
+    "sampled_feasible": true,
+    "best_decision_bitstring": "1101110001",
+    "ideal_feasible_probability": 0.9999999999999885,
+    "ideal_exact_optimum_probability": 0.008879893900194315,
+    "parameters": [
+      2.4314546363447995,
+      1.378777282143998,
+      2.6973649175810768,
+      2.690846276941291
+    ],
+    "shots": 128.0,
+    "penalty": 64.28244844572103
+  },
+  "quantum_experiments": [
+    {
+      "solver": "Standard QAOA",
+      "depth": 1,
+      "seed": 42,
+      "exact_objective": 45.041981731448715,
+      "best_measured_feasible_objective": 41.38415707916623,
+      "absolute_optimality_gap": 3.6578246522824855,
+      "relative_optimality_gap": 0.08120922995998109,
+      "feasible_shot_probability": 0.1484375,
+      "exact_optimum_sampling_probability": 0.0,
+      "circuit_depth": 66,
+      "gate_counts": "{\"rz\": 310, \"rzz\": 165, \"u2\": 20, \"rx\": 20, \"measure\": 20}",
+      "total_qubits": 20,
+      "circuit_evaluations": 5,
+      "optimizer_iterations": 4,
+      "runtime_seconds": 1.7103775999275967,
+      "best_selected_ids": [
+        "C0079",
+        "C0088",
+        "C0202",
+        "C0258",
+        "C0359",
+        "C0293"
+      ],
+      "sampled_feasible": true,
+      "best_decision_bitstring": "1101011100",
+      "ideal_feasible_probability": NaN,
+      "ideal_exact_optimum_probability": NaN,
+      "parameters": [
+        2.4314546363447995,
+        1.378777282143998
+      ],
+      "shots": 128.0,
+      "penalty": NaN
+    },
+    {
+      "solver": "Standard QAOA",
+      "depth": 1,
+      "seed": 137,
+      "exact_objective": 45.041981731448715,
+      "best_measured_feasible_objective": 43.837239774494165,
+      "absolute_optimality_gap": 1.2047419569545497,
+      "relative_optimality_gap": 0.02674709039530088,
+      "feasible_shot_probability": 0.21875,
+      "exact_optimum_sampling_probability": 0.0,
+      "circuit_depth": 66,
+      "gate_counts": "{\"rz\": 310, \"rzz\": 165, \"u2\": 20, \"rx\": 20, \"measure\": 20}",
+      "total_qubits": 20,
+      "circuit_evaluations": 5,
+      "optimizer_iterations": 4,
+      "runtime_seconds": 1.9562578999903053,
+      "best_selected_ids": [
+        "C0079",
+        "C0088",
+        "C0202",
+        "C0345",
+        "C0258",
+        "C0293"
+      ],
+      "sampled_feasible": true,
+      "best_decision_bitstring": "1101110100",
+      "ideal_feasible_probability": NaN,
+      "ideal_exact_optimum_probability": NaN,
+      "parameters": [
+        2.69605842864308,
+        1.3640816901054107
+      ],
+      "shots": 128.0,
+      "penalty": NaN
+    },
+    {
+      "solver": "Standard QAOA",
+      "depth": 2,
+      "seed": 42,
+      "exact_objective": 45.041981731448715,
+      "best_measured_feasible_objective": 42.4123960351873,
+      "absolute_optimality_gap": 2.6295856962614153,
+      "relative_optimality_gap": 0.058380772674249695,
+      "feasible_shot_probability": 0.21875,
+      "exact_optimum_sampling_probability": 0.0,
+      "circuit_depth": 106,
+      "gate_counts": "{\"rz\": 620, \"rzz\": 330, \"u2\": 20, \"u3\": 20, \"rx\": 20, \"measure\": 20}",
+      "total_qubits": 20,
+      "circuit_evaluations": 7,
+      "optimizer_iterations": 6,
+      "runtime_seconds": 3.50141440005973,
+      "best_selected_ids": [
+        "C0079",
+        "C0088",
+        "C0031",
+        "C0345",
+        "C0258",
+        "C0339"
+      ],
+      "sampled_feasible": true,
+      "best_decision_bitstring": "1110110001",
+      "ideal_feasible_probability": NaN,
+      "ideal_exact_optimum_probability": NaN,
+      "parameters": [
+        2.9314546363447995,
+        1.378777282143998,
+        2.6973649175810768,
+        2.190846276941291
+      ],
+      "shots": 128.0,
+      "penalty": NaN
+    },
+    {
+      "solver": "Standard QAOA",
+      "depth": 2,
+      "seed": 137,
+      "exact_objective": 45.041981731448715,
+      "best_measured_feasible_objective": 41.3795724144852,
+      "absolute_optimality_gap": 3.6624093169635117,
+      "relative_optimality_gap": 0.08131101643794648,
+      "feasible_shot_probability": 0.1484375,
+      "exact_optimum_sampling_probability": 0.0,
+      "circuit_depth": 106,
+      "gate_counts": "{\"rz\": 620, \"rzz\": 330, \"u2\": 20, \"u3\": 20, \"rx\": 20, \"measure\": 20}",
+      "total_qubits": 20,
+      "circuit_evaluations": 7,
+      "optimizer_iterations": 6,
+      "runtime_seconds": 3.1328261999879032,
+      "best_selected_ids": [
+        "C0079",
+        "C0202",
+        "C0345",
+        "C0258",
+        "C0112",
+        "C0339"
+      ],
+      "sampled_feasible": true,
+      "best_decision_bitstring": "1001110011",
+      "ideal_feasible_probability": NaN,
+      "ideal_exact_optimum_probability": NaN,
+      "parameters": [
+        2.69605842864308,
+        1.3640816901054107,
+        1.341303191044179,
+        1.9645068914047965
+      ],
+      "shots": 128.0,
+      "penalty": NaN
+    },
+    {
+      "solver": "Cardinality QAOA",
+      "depth": 1,
+      "seed": 42,
+      "exact_objective": 45.041981731448715,
+      "best_measured_feasible_objective": 41.73520335055609,
+      "absolute_optimality_gap": 3.3067783808926237,
+      "relative_optimality_gap": 0.07341547271628596,
+      "feasible_shot_probability": 1.0,
+      "exact_optimum_sampling_probability": 0.0,
+      "circuit_depth": 7,
+      "gate_counts": "{\"rxx\": 10, \"ryy\": 10, \"measure\": 10, \"x\": 6, \"diagonal\": 1}",
+      "total_qubits": 10,
+      "circuit_evaluations": 5,
+      "optimizer_iterations": 4,
+      "runtime_seconds": 0.75149319996126,
+      "best_selected_ids": [
+        "C0079",
+        "C0088",
+        "C0031",
+        "C0202",
+        "C0345",
+        "C0258"
+      ],
+      "sampled_feasible": true,
+      "best_decision_bitstring": "1111110000",
+      "ideal_feasible_probability": 0.9999999999999933,
+      "ideal_exact_optimum_probability": 0.0,
+      "parameters": [
+        2.9314546363447995,
+        1.378777282143998
+      ],
+      "shots": 128.0,
+      "penalty": 64.28244844572103
+    },
+    {
+      "solver": "Cardinality QAOA",
+      "depth": 1,
+      "seed": 137,
+      "exact_objective": 45.041981731448715,
+      "best_measured_feasible_objective": 41.73520335055609,
+      "absolute_optimality_gap": 3.3067783808926237,
+      "relative_optimality_gap": 0.07341547271628596,
+      "feasible_shot_probability": 1.0,
+      "exact_optimum_sampling_probability": 0.0,
+      "circuit_depth": 7,
+      "gate_counts": "{\"rxx\": 10, \"ryy\": 10, \"measure\": 10, \"x\": 6, \"diagonal\": 1}",
+      "total_qubits": 10,
+      "circuit_evaluations": 5,
+      "optimizer_iterations": 4,
+      "runtime_seconds": 0.6531188000226393,
+      "best_selected_ids": [
+        "C0079",
+        "C0088",
+        "C0031",
+        "C0202",
+        "C0345",
+        "C0258"
+      ],
+      "sampled_feasible": true,
+      "best_decision_bitstring": "1111110000",
+      "ideal_feasible_probability": 1.000000000000007,
+      "ideal_exact_optimum_probability": 0.0,
+      "parameters": [
+        2.69605842864308,
+        1.3640816901054107
+      ],
+      "shots": 128.0,
+      "penalty": 64.28244844572103
+    },
+    {
+      "solver": "Cardinality QAOA",
+      "depth": 2,
+      "seed": 42,
+      "exact_objective": 45.041981731448715,
+      "best_measured_feasible_objective": 45.041981731448715,
+      "absolute_optimality_gap": 0.0,
+      "relative_optimality_gap": 0.0,
+      "feasible_shot_probability": 1.0,
+      "exact_optimum_sampling_probability": 0.0234375,
+      "circuit_depth": 12,
+      "gate_counts": "{\"rxx\": 20, \"ryy\": 20, \"measure\": 10, \"x\": 6, \"diagonal\": 2}",
+      "total_qubits": 10,
+      "circuit_evaluations": 7,
+      "optimizer_iterations": 6,
+      "runtime_seconds": 0.9432251000544056,
+      "best_selected_ids": [
+        "C0079",
+        "C0088",
+        "C0202",
+        "C0345",
+        "C0258",
+        "C0339"
+      ],
+      "sampled_feasible": true,
+      "best_decision_bitstring": "1101110001",
+      "ideal_feasible_probability": 0.9999999999999885,
+      "ideal_exact_optimum_probability": 0.008879893900194315,
+      "parameters": [
+        2.4314546363447995,
+        1.378777282143998,
+        2.6973649175810768,
+        2.690846276941291
+      ],
+      "shots": 128.0,
+      "penalty": 64.28244844572103
+    },
+    {
+      "solver": "Cardinality QAOA",
+      "depth": 2,
+      "seed": 137,
+      "exact_objective": 45.041981731448715,
+      "best_measured_feasible_objective": 41.73520335055609,
+      "absolute_optimality_gap": 3.3067783808926237,
+      "relative_optimality_gap": 0.07341547271628596,
+      "feasible_shot_probability": 1.0,
+      "exact_optimum_sampling_probability": 0.0,
+      "circuit_depth": 12,
+      "gate_counts": "{\"rxx\": 20, \"ryy\": 20, \"measure\": 10, \"x\": 6, \"diagonal\": 2}",
+      "total_qubits": 10,
+      "circuit_evaluations": 7,
+      "optimizer_iterations": 6,
+      "runtime_seconds": 0.9481567000038922,
+      "best_selected_ids": [
+        "C0079",
+        "C0088",
+        "C0031",
+        "C0202",
+        "C0345",
+        "C0258"
+      ],
+      "sampled_feasible": true,
+      "best_decision_bitstring": "1111110000",
+      "ideal_feasible_probability": 1.0000000000000078,
+      "ideal_exact_optimum_probability": 8.233566372350701e-05,
+      "parameters": [
+        2.69605842864308,
+        1.53047422417039,
+        1.3055372465919397,
+        1.494364017562308
+      ],
+      "shots": 128.0,
+      "penalty": 64.28244844572103
+    }
+  ],
+  "qubo": {
+    "penalty": 64.28244844572103,
+    "n_qubits": 20,
+    "cost_slack_weights": [
+      1,
+      2,
+      4,
+      8,
+      10
+    ],
+    "capacity_slack_weights": [
+      1,
+      2,
+      4,
+      8,
+      7
+    ]
+  }
+}

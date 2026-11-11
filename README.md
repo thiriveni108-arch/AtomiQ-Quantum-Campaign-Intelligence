@@ -205,6 +205,12 @@ npm run dev
 
 Open `http://localhost:3000`. The frontend requires the Python backend for official data, live pipeline jobs, and sandbox optimization.
 
+## Submission Deliverables
+
+- [Stage 1 predictions](stage1_predictions.csv)
+- [Stage 2 selection](stage2_selection.json)
+- [Stage 3 simulation](stage3_simulation.json)
+
 ## Reproducibility
 
 - Official execution requires authorized copies of the three organizer files listed in [Quick start](#quick-start).
