@@ -9,14 +9,21 @@ AtomiQ is a reproducible hybrid quantum–classical system for selecting a bank 
 - [Quick start](#quick-start)
 - [Project overview](#project-overview)
 - [Three-stage architecture](#three-stage-architecture)
+- [Pipeline methodology](#pipeline-methodology)
+- [Stage 2 mathematical formulation](#stage-2-mathematical-formulation)
+- [Stage 3 circuit and transpilation](#stage-3-circuit-and-transpilation)
+- [Noise and error analysis](#noise-and-error-analysis)
 - [Quantum implementation](#quantum-implementation)
 - [Official results](#official-results)
+- [Business conclusions](#business-conclusions)
 - [Quantum vs classical comparison](#quantum-vs-classical-comparison)
 - [Project structure](#project-structure)
 - [Installation](#installation)
 - [Running the pipeline](#running-the-pipeline)
 - [Running the website](#running-the-website)
+- [Submission deliverables](#submission-deliverables)
 - [Reproducibility](#reproducibility)
+- [Source references](#source-references)
 - [Limitations](#limitations)
 - [License](#license)
 
@@ -80,6 +87,105 @@ One qubit represents each selected customer. An `RY(2 asin(sqrt(p)))` rotation e
 - seeded classical Monte Carlo;
 - a controlled synthetic-noise sensitivity run.
 
+## Pipeline methodology
+
+### Stage 1: preprocessing, fidelity kernel, and calibration
+
+Stage 1 fits every data-dependent transformation on training data only. `PDaysEngineer` first handles the campaign-specific `pdays` semantics. The preprocessing pipeline then imputes missing values, encodes categorical features, robust-scales numeric features, reduces the transformed matrix to four principal components, and maps the components into `[-pi, pi]` for four-qubit angle encoding. Official test features and customer IDs are used only after fitting, for inference and deterministic ranking.
+
+For a transformed customer vector $x$, the deployed fixed depth-1 feature map applies a Hadamard gate to every qubit, then `RY(x_i)`, fixed zero `RZ`/`RY` rotations, and a linear CNOT chain. If $|\phi(x)\rangle$ is the resulting state, the precomputed kernel supplied to a class-balanced SVM is the squared fidelity
+
+$$
+K(x,z) = \left|\langle\phi(x)\mid\phi(z)\rangle\right|^2.
+$$
+
+Probability calibration is also training-only. A seeded stratified 25% inner holdout fits a logistic Platt calibrator to SVM decision scores; the SVM is then refitted on all 300 labeled rows. The calibrated probabilities drive the official ranking. Reported cross-validation metrics are exploratory estimates on labeled training data, not results on the unlabeled official test set.
+
+### Stage 2: exact and quantum-assisted optimization
+
+The ten highest-ranked Stage 1 candidates are joined to their expected deposit value, contact cost, and capacity data. Exact enumeration evaluates all $\binom{10}{6}=210$ six-customer selections and provides the authoritative optimum. Standard QAOA solves a decision-plus-slack QUBO, while cardinality-preserving QAOA works directly on the ten decision qubits. Both QAOA variants use seeded COBYLA optimization and finite-shot Aer sampling. The provably optimal exact selection, rather than a quantum sample, is passed to Stage 3.
+
+### Stage 3: probability simulation
+
+Each selected customer is modeled as an independent Bernoulli outcome using the unchanged Stage 1 probability. The pipeline calculates the exact Poisson-binomial distribution, constructs the corresponding six-qubit circuit, evaluates its ideal statevector, samples it on Qiskit Aer, compares seeded classical Monte Carlo, and runs one explicitly parameterized synthetic-noise sensitivity experiment. This separates analytic truth, ideal quantum simulation, finite-shot sampling, and controlled noise.
+
+## Stage 2 mathematical formulation
+
+For candidate $i$, let $x_i\in\{0,1\}$ indicate selection, $p_i$ be the Stage 1 subscription probability, $d_i$ the expected deposit value, $c_i$ the contact cost, and $h_i$ the capacity units. The implemented constrained problem is
+
+$$
+\max_{x}\quad \sum_{i=1}^{10} x_i\left(p_i d_i-c_i\right)
+$$
+
+subject to
+
+$$
+\sum_{i=1}^{10}x_i=6,
+\qquad
+\sum_{i=1}^{10}c_i x_i\le 25,
+\qquad
+\sum_{i=1}^{10}h_i x_i\le 22,
+\qquad
+x_i\in\{0,1\}.
+$$
+
+The standard QAOA implementation converts maximization to energy minimization. With $v_i=p_i d_i-c_i$, binary cost-slack bits $s_j$, capacity-slack bits $t_k$, and penalty $\lambda$, the QUBO energy is
+
+$$
+\begin{aligned}
+E(x,s,t)={}&-\sum_i v_i x_i
++\lambda\left(\sum_i x_i-6\right)^2\\
+&+\lambda\left(\sum_i c_i x_i+\sum_j w^{(c)}_j s_j-25\right)^2\\
+&+\lambda\left(\sum_i h_i x_i+\sum_k w^{(h)}_k t_k-22\right)^2.
+\end{aligned}
+$$
+
+The bounded binary slack weights are $w^{(c)}=[1,2,4,8,10]$ for contact cost and $w^{(h)}=[1,2,4,8,7]$ for capacity. The instance-specific penalty is $\lambda=64.28244844572103$, computed as one plus the sum of absolute candidate objective contributions. Standard QAOA therefore uses 10 decision qubits plus two five-qubit slack registers, for 20 logical qubits. Its circuit starts in a uniform superposition, applies the QUBO cost phase with `RZ`/`RZZ` gates, and uses an `RX` mixer.
+
+The cardinality-preserving variant uses only the 10 decision qubits. It initializes a Hamming-weight-six basis state and alternates the diagonal penalized objective with a ring of paired `RXX` and `RYY` interactions. This XY-style mixer preserves Hamming weight, so $\sum_i x_i=6$ holds throughout ideal evolution; the recorded probability of leaving the weight-six subspace is `0.0`. Budget and capacity violations remain penalized in the diagonal cost. Exact enumeration is the classical certificate for QAOA feasibility and optimality gaps.
+
+## Stage 3 circuit and transpilation
+
+For selected-customer probability $p_i$, qubit $i$ starts in $|0\rangle$ and receives
+
+$$
+\theta_i=2\arcsin\sqrt{p_i},
+\qquad
+RY(\theta_i)|0\rangle=\sqrt{1-p_i}|0\rangle+\sqrt{p_i}|1\rangle.
+$$
+
+All six qubits are measured in the computational basis. The number of `1` bits is the simulated subscription count, and bitstrings with Hamming weight at least three are successes. No entangling gates are used because Stage 3 assumes independent customer outcomes. The circuit contains six `RY` gates followed by six measurements.
+
+The requested depth-two resource comparison is below. Original and transpiled depths are equal under the recorded Aer transpilation; no routing SWAPs were introduced.
+
+| Circuit | Logical qubits | Physical hardware qubits | Original depth | Transpiled depth | Recorded gate counts | SWAPs | Final sampling shots |
+|---|---:|---|---:|---:|---|---:|---:|
+| Standard QAOA, $p=2$ | 20 | N/A (simulator) | 106 | 106 | `rz: 620`, `rzz: 330`, `u2: 20`, `u3: 20`, `rx: 20`, `measure: 20` | 0 | 128 |
+| Cardinality-preserving QAOA, $p=2$ | 10 | N/A (simulator) | 12 | 12 | `rxx: 20`, `ryy: 20`, `x: 6`, `diagonal: 2`, `measure: 10` | 0 | 128 |
+| Stage 3 probability circuit | 6 | N/A (simulator) | 2 | 2 | `ry: 6`, `measure: 6` | 0 | 1,024 / 4,096 / 16,384 |
+
+Physical hardware qubits are N/A because every experiment used local classical simulators; there was no physical-device mapping or hardware execution. The QAOA counts are identical for both recorded seeds at each formulation/depth.
+
+## Noise and error analysis
+
+The exact Poisson-binomial result is $P(S\ge3)=0.4669729140887742$. The ideal statevector gives `0.4669729140887741`; their maximum full-distribution difference is `1.1102230246251565e-16`, i.e. floating-point precision.
+
+| Method | Samples / shots | Estimate of $P(S\ge3)$ | Absolute error vs exact | Standard error | Normal 95% half-width |
+|---|---:|---:|---:|---:|---:|
+| Exact Poisson-binomial | Exact | 0.4669729141 | 0 | N/A | N/A |
+| Ideal statevector | Analytic | 0.4669729141 | ~`1.1e-16` | N/A | N/A |
+| Qiskit Aer | 1,024 | 0.4580078125 | 0.0089651016 | 0.0155697980 | 0.0305168041 |
+| Qiskit Aer | 4,096 | 0.4594726562 | 0.0075002578 | 0.0077867942 | 0.0152621166 |
+| Qiskit Aer | 16,384 | 0.4659423828 | 0.0010305313 | 0.0038971776 | 0.0076384681 |
+| Classical Monte Carlo | 1,024 | 0.4863281250 | 0.0193552109 | 0.0156191577 | 0.0306135490 |
+| Classical Monte Carlo | 4,096 | 0.4597167969 | 0.0072561172 | 0.0077871035 | 0.0152627228 |
+| Classical Monte Carlo | 16,384 | 0.4645385742 | 0.0024343399 | 0.0038964133 | 0.0076369701 |
+| Controlled-noise Aer | 4,096 | 0.4846191406 | 0.0176462265 | 0.0078088027 | 0.0153052533 |
+
+For each sampled estimate $\hat p$ with $N$ shots or samples, the implementation reports $SE=\sqrt{\hat p(1-\hat p)/N}$ and normal-approximation 95% half-width $1.96\,SE$. The decreasing half-widths show the expected $1/\sqrt{N}$ sampling behavior. Individual seeded estimates need not approach the exact value monotonically, but the highest-shot Aer run is within about `0.00103` absolute probability.
+
+The controlled-noise run is a sensitivity experiment, not hardware data. It applies `0.005` one-qubit depolarizing error to every `RY` gate and symmetric `0.01` readout error, using 4,096 shots and seed 142. Its estimate shifts to `0.4846191406`, an absolute error of `0.0176462265`; gate/readout noise can therefore introduce bias in addition to finite-shot uncertainty. No mitigation or extrapolation is claimed.
+
 ## Quantum implementation
 
 - **Feature encoding:** four training-fitted PCA angles are encoded with Hadamard and RY operations followed by a linear CNOT chain.
@@ -112,6 +218,12 @@ The committed outputs are `stage1_result.csv`, `stage2_result.json`, and `stage3
 | Exact `P(subscriptions ≥ 3)` | `0.4669729141` |
 
 Cardinality-preserving QAOA at depth 2, seed 42 sampled the exact optimum. Exact enumeration remains the authoritative operational solver.
+
+## Business conclusions
+
+The recommended campaign contains `C0079`, `C0088`, `C0202`, `C0345`, `C0258`, and `C0339`. Under the model, this portfolio has expected net objective `45.0419817314`, uses contact cost `15` of the available `25`, and uses capacity `16` of `22`. It is the exact optimum among all 210 six-customer combinations. The best cardinality-preserving QAOA run also sampled this portfolio with zero measured objective gap, but exact enumeration is the operational selection because it proves optimality at this scale.
+
+Assuming the six predicted outcomes are independent Bernoulli variables with the Stage 1 probabilities, the modeled probability of at least three subscriptions is `0.4669729141` (46.70%). These are **predicted expected outcomes**, not observed business returns: the official test set is unlabeled, no outreach outcome is included, and no realized deposits, revenue, or profit are claimed. Model calibration, independence, and data representativeness remain material business assumptions.
 
 ## Quantum vs classical comparison
 
@@ -222,6 +334,22 @@ Open `http://localhost:3000`. The frontend requires the Python backend for offic
 - The principal seeds are 42 and 137; per-shot Stage 3 runs record their exact seeds in JSON.
 
 The official validator checks row counts, schemas, unique IDs, top-ten membership, constraints, and unchanged Stage 1 probabilities through Stage 3.
+
+A complete official rerun requires authorized organizer copies of both workbooks and the challenge PDF listed in [Quick start](#quick-start). Those source datasets are not included in the public repository because no public redistribution license was supplied. Without them, judges can inspect the committed outputs, reports, fitted-model metadata, tests, and application, and can run the safe synthetic demonstration; they cannot regenerate the official predictions from raw organizer data. No hidden download or substitute dataset is used.
+
+## Source references
+
+The technical report above is traceable to these committed artifacts:
+
+- [Stage 1 official predictions](stage1_result.csv) and [submission-form filename](stage1_predictions.csv)
+- [Stage 2 official selection and QAOA results](stage2_result.json) and [submission-form filename](stage2_selection.json)
+- [Stage 3 official probability, shot, Monte Carlo, and noise results](stage3_result.json) and [submission-form filename](stage3_simulation.json)
+- [Quantum circuit resource audit](reports/quantum_circuit_resources.json)
+- [Stage 2 circuit complexity and QUBO register details](reports/stage2_circuit_complexity.json)
+- [Final submission report](reports/final_submission_report.md)
+- [Submission compliance audit](reports/submission_compliance_audit.md)
+- [Stage 1 fitted-model metadata](artifacts/stage1_final_model_metadata.json)
+- [Stage 1 model implementation](src/pennylane_models.py), [QUBO formulation](src/optimization/qubo_formulation.py), [standard QAOA](src/optimization/qaoa_standard.py), [cardinality-preserving QAOA](src/optimization/qaoa_constrained.py), and [Stage 3 sampler](src/simulation/quantum_sampler.py)
 
 ## Limitations
 
