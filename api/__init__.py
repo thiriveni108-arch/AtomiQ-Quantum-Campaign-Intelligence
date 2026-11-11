@@ -1,0 +1,1 @@
+"""AtomiQ web API adapter."""

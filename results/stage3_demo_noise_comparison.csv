@@ -1,0 +1,2 @@
+shots,seed,estimated_probability,standard_error,normal_95_half_width,runtime_seconds,one_qubit_depolarizing,readout_error,exact_probability,absolute_error
+4096,142,0.859130859375,0.005435726763767237,0.010654024456983784,0.019431499997153878,0.005,0.01,0.8613657712,0.002234911825000019

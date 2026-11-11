@@ -1,0 +1,21 @@
+{
+  "mode": "demo",
+  "seed_values": [42, 137],
+  "depth_values": [1, 2],
+  "optimization_shots": 32,
+  "final_shots": 128,
+  "optimizer_maxiter": 3,
+  "constraints": {"select_exactly": 6, "budget": 25, "capacity": 22},
+  "demo_candidates": [
+    {"customer_id":"DEMO01","predicted_probability":0.82,"contact_cost":1,"expected_deposit_value":30,"capacity_units":4},
+    {"customer_id":"DEMO02","predicted_probability":0.74,"contact_cost":4,"expected_deposit_value":26,"capacity_units":4},
+    {"customer_id":"DEMO03","predicted_probability":0.68,"contact_cost":3,"expected_deposit_value":18,"capacity_units":4},
+    {"customer_id":"DEMO04","predicted_probability":0.61,"contact_cost":2,"expected_deposit_value":30,"capacity_units":4},
+    {"customer_id":"DEMO05","predicted_probability":0.55,"contact_cost":2,"expected_deposit_value":21,"capacity_units":4},
+    {"customer_id":"DEMO06","predicted_probability":0.48,"contact_cost":4,"expected_deposit_value":21,"capacity_units":4},
+    {"customer_id":"DEMO07","predicted_probability":0.43,"contact_cost":1,"expected_deposit_value":20,"capacity_units":1},
+    {"customer_id":"DEMO08","predicted_probability":0.37,"contact_cost":3,"expected_deposit_value":14,"capacity_units":1},
+    {"customer_id":"DEMO09","predicted_probability":0.31,"contact_cost":1,"expected_deposit_value":29,"capacity_units":2},
+    {"customer_id":"DEMO10","predicted_probability":0.24,"contact_cost":1,"expected_deposit_value":12,"capacity_units":4}
+  ]
+}

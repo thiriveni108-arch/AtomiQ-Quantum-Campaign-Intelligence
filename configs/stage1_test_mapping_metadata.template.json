@@ -1,0 +1,5 @@
+{
+  "organizer_verified": false,
+  "verification_source": "Replace with organizer document/email reference",
+  "notes": "Set organizer_verified=true only after the row-to-customer-ID mapping is explicitly confirmed by organizers."
+}

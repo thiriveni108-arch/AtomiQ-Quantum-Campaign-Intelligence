@@ -1,0 +1,281 @@
+{
+  "workbook": "bank_campaign_participant_release (1).xlsx",
+  "sheets": {
+    "README": {
+      "rows": 20,
+      "columns": [
+        "Item",
+        "Details"
+      ]
+    },
+    "Stage1_Train": {
+      "rows": 300,
+      "columns": [
+        "customer_id",
+        "age",
+        "job",
+        "marital",
+        "education",
+        "default",
+        "balance",
+        "housing",
+        "loan",
+        "contact",
+        "day",
+        "month",
+        "campaign",
+        "pdays",
+        "previous",
+        "poutcome",
+        "y"
+      ]
+    },
+    "Stage1_Test": {
+      "rows": 100,
+      "columns": [
+        "age",
+        "job",
+        "marital",
+        "education",
+        "default",
+        "balance",
+        "housing",
+        "loan",
+        "contact",
+        "day",
+        "month",
+        "campaign",
+        "pdays",
+        "previous",
+        "poutcome"
+      ]
+    },
+    "Stage2_Data": {
+      "rows": 400,
+      "columns": [
+        "customer_id",
+        "contact_cost",
+        "expected_deposit_value",
+        "capacity_units",
+        "customer_segment"
+      ]
+    },
+    "Stage2_Constraints": {
+      "rows": 6,
+      "columns": [
+        "parameter",
+        "symbol",
+        "value",
+        "constraint / rule"
+      ]
+    }
+  },
+  "train_shape": [
+    300,
+    17
+  ],
+  "test_shape": [
+    100,
+    15
+  ],
+  "label_counts": {
+    "no": 265,
+    "yes": 35
+  },
+  "label_values_valid": true,
+  "train_customer_id_unique": true,
+  "train_customer_id_missing": 0,
+  "test_customer_id_present": false,
+  "mapping_candidates": [
+    ".venv\\Lib\\site-packages\\joblib\\_memmapping_reducer.py",
+    ".venv\\Lib\\site-packages\\_pytest\\assertion\\_compare_mapping.py",
+    ".venv\\Lib\\site-packages\\_pytest\\assertion\\__pycache__\\_compare_mapping.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\scipy\\io\\tests\\test_idl.py",
+    ".venv\\Lib\\site-packages\\scipy\\io\\tests\\__pycache__\\test_idl.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\pygments\\formatters\\_mapping.py",
+    ".venv\\Lib\\site-packages\\pygments\\lexers\\_mapping.py",
+    ".venv\\Lib\\site-packages\\pygments\\styles\\_mapping.py",
+    ".venv\\Lib\\site-packages\\pygments\\styles\\__pycache__\\_mapping.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\pygments\\lexers\\__pycache__\\_mapping.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\pygments\\formatters\\__pycache__\\_mapping.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\formatters\\_mapping.py",
+    ".venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\lexers\\_mapping.py",
+    ".venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\styles\\_mapping.py",
+    ".venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\styles\\__pycache__\\_mapping.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\lexers\\__pycache__\\_mapping.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\formatters\\__pycache__\\_mapping.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\joblib\\test\\test_memmapping.py",
+    ".venv\\Lib\\site-packages\\joblib\\__pycache__\\_memmapping_reducer.cpython-314.pyc",
+    ".venv\\Lib\\site-packages\\joblib\\test\\__pycache__\\test_memmapping.cpython-314.pyc"
+  ],
+  "duration_absent": true,
+  "train_duplicate_rows": 0,
+  "test_duplicate_rows": 0,
+  "train_missing": {
+    "customer_id": 0,
+    "age": 0,
+    "job": 0,
+    "marital": 0,
+    "education": 0,
+    "default": 0,
+    "balance": 0,
+    "housing": 0,
+    "loan": 0,
+    "contact": 0,
+    "day": 0,
+    "month": 0,
+    "campaign": 0,
+    "pdays": 0,
+    "previous": 0,
+    "poutcome": 0,
+    "y": 0
+  },
+  "test_missing": {
+    "age": 0,
+    "job": 0,
+    "marital": 0,
+    "education": 0,
+    "default": 0,
+    "balance": 0,
+    "housing": 0,
+    "loan": 0,
+    "contact": 0,
+    "day": 0,
+    "month": 0,
+    "campaign": 0,
+    "pdays": 0,
+    "previous": 0,
+    "poutcome": 0
+  },
+  "categorical_values": {
+    "job": [
+      "admin.",
+      "blue-collar",
+      "entrepreneur",
+      "housemaid",
+      "management",
+      "retired",
+      "self-employed",
+      "services",
+      "student",
+      "technician",
+      "unemployed",
+      "unknown"
+    ],
+    "marital": [
+      "divorced",
+      "married",
+      "single"
+    ],
+    "education": [
+      "primary",
+      "secondary",
+      "tertiary",
+      "unknown"
+    ],
+    "default": [
+      "no",
+      "yes"
+    ],
+    "housing": [
+      "no",
+      "yes"
+    ],
+    "loan": [
+      "no",
+      "yes"
+    ],
+    "contact": [
+      "cellular",
+      "telephone",
+      "unknown"
+    ],
+    "month": [
+      "apr",
+      "aug",
+      "feb",
+      "jan",
+      "jul",
+      "jun",
+      "mar",
+      "may",
+      "nov",
+      "oct",
+      "sep"
+    ],
+    "poutcome": [
+      "failure",
+      "other",
+      "success",
+      "unknown"
+    ]
+  },
+  "numeric_summary": {
+    "age": {
+      "count": 300.0,
+      "mean": 40.787,
+      "std": 10.667,
+      "min": 22.0,
+      "25%": 33.0,
+      "50%": 39.0,
+      "75%": 48.0,
+      "max": 80.0
+    },
+    "balance": {
+      "count": 300.0,
+      "mean": 1695.953,
+      "std": 3412.929,
+      "min": -2082.0,
+      "25%": 58.25,
+      "50%": 460.5,
+      "75%": 1588.5,
+      "max": 27069.0
+    },
+    "day": {
+      "count": 300.0,
+      "mean": 16.713,
+      "std": 8.706,
+      "min": 1.0,
+      "25%": 9.0,
+      "50%": 17.0,
+      "75%": 25.0,
+      "max": 31.0
+    },
+    "campaign": {
+      "count": 300.0,
+      "mean": 2.92,
+      "std": 3.998,
+      "min": 1.0,
+      "25%": 1.0,
+      "50%": 2.0,
+      "75%": 3.0,
+      "max": 50.0
+    },
+    "pdays": {
+      "count": 300.0,
+      "mean": 31.697,
+      "std": 86.844,
+      "min": -1.0,
+      "25%": -1.0,
+      "50%": -1.0,
+      "75%": -1.0,
+      "max": 385.0
+    },
+    "previous": {
+      "count": 300.0,
+      "mean": 0.437,
+      "std": 1.282,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 0.0,
+      "75%": 0.0,
+      "max": 8.0
+    }
+  },
+  "feature_schema_valid": true,
+  "leakage_risks": [
+    "customer_id excluded from features",
+    "all transforms/tuning/calibration must be fold-fitted",
+    "Stage1_Test prohibited from fitting"
+  ]
+}

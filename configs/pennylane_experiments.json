@@ -1,0 +1,10 @@
+{
+  "seed": 42,
+  "outer_folds": 3,
+  "qubits": 4,
+  "angle_range": [-3.141592653589793, 3.141592653589793],
+  "representations": ["pca", "supervised_f_classif"],
+  "trainable_kernel": {"depths": [1, 2], "learning_rates": [0.03, 0.08], "initialization_seeds": [42, 137], "iterations": 6, "alignment_sample_cap": 80},
+  "data_reuploading": {"layers": 2, "learning_rate": 0.03, "initialization_seeds": [42, 137], "epochs": 15, "patience": 5},
+  "selection_rule": "Brier + 0.1*log_loss - 0.1*PR_AUC - 0.05*Precision@10; require stability and practicality before replacing baseline"
+}

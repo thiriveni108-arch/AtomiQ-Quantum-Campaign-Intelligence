@@ -1,0 +1,10 @@
+{
+  "samples": 20,
+  "max_absolute_difference": 6.661338147750939e-16,
+  "mean_absolute_difference": 4.293926429377407e-17,
+  "qiskit_min_eigenvalue": 0.020281208855063085,
+  "pennylane_min_eigenvalue": 0.02028120885506221,
+  "pennylane_negative_eigenvalues_below_-1e-10": 0,
+  "prediction_agreement": 1.0,
+  "definition": "|<phi(x)|phi(y)>|^2; exact statevectors"
+}

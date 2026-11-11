@@ -1,0 +1,4 @@
+solver,best_objective,mean_feasible_probability,mean_optimum_probability,mean_runtime_seconds
+Cardinality QAOA,81.53,0.986328125,0.0,0.6478058000211604
+Exact enumeration,81.92,1.0,1.0,0.001011400017887354
+Standard QAOA,81.53,0.19140625,0.0,1.576227250014199

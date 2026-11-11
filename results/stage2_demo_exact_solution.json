@@ -1,0 +1,153 @@
+{
+  "mode": "demo",
+  "official": false,
+  "top_10_inputs": [
+    {
+      "customer_id": "DEMO01",
+      "predicted_probability": 0.82,
+      "contact_cost": 1,
+      "expected_deposit_value": 30.0,
+      "capacity_units": 4
+    },
+    {
+      "customer_id": "DEMO02",
+      "predicted_probability": 0.74,
+      "contact_cost": 4,
+      "expected_deposit_value": 26.0,
+      "capacity_units": 4
+    },
+    {
+      "customer_id": "DEMO03",
+      "predicted_probability": 0.68,
+      "contact_cost": 3,
+      "expected_deposit_value": 18.0,
+      "capacity_units": 4
+    },
+    {
+      "customer_id": "DEMO04",
+      "predicted_probability": 0.61,
+      "contact_cost": 2,
+      "expected_deposit_value": 30.0,
+      "capacity_units": 4
+    },
+    {
+      "customer_id": "DEMO05",
+      "predicted_probability": 0.55,
+      "contact_cost": 2,
+      "expected_deposit_value": 21.0,
+      "capacity_units": 4
+    },
+    {
+      "customer_id": "DEMO06",
+      "predicted_probability": 0.48,
+      "contact_cost": 4,
+      "expected_deposit_value": 21.0,
+      "capacity_units": 4
+    },
+    {
+      "customer_id": "DEMO07",
+      "predicted_probability": 0.43,
+      "contact_cost": 1,
+      "expected_deposit_value": 20.0,
+      "capacity_units": 1
+    },
+    {
+      "customer_id": "DEMO08",
+      "predicted_probability": 0.37,
+      "contact_cost": 3,
+      "expected_deposit_value": 14.0,
+      "capacity_units": 1
+    },
+    {
+      "customer_id": "DEMO09",
+      "predicted_probability": 0.31,
+      "contact_cost": 1,
+      "expected_deposit_value": 29.0,
+      "capacity_units": 2
+    },
+    {
+      "customer_id": "DEMO10",
+      "predicted_probability": 0.24,
+      "contact_cost": 1,
+      "expected_deposit_value": 12.0,
+      "capacity_units": 4
+    }
+  ],
+  "selected_customers": [
+    {
+      "customer_id": "DEMO01",
+      "predicted_probability": 0.82
+    },
+    {
+      "customer_id": "DEMO02",
+      "predicted_probability": 0.74
+    },
+    {
+      "customer_id": "DEMO03",
+      "predicted_probability": 0.68
+    },
+    {
+      "customer_id": "DEMO04",
+      "predicted_probability": 0.61
+    },
+    {
+      "customer_id": "DEMO05",
+      "predicted_probability": 0.55
+    },
+    {
+      "customer_id": "DEMO09",
+      "predicted_probability": 0.31
+    }
+  ],
+  "exact": {
+    "status": "optimal",
+    "best": {
+      "bits": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "selected_ids": [
+        "DEMO01",
+        "DEMO02",
+        "DEMO03",
+        "DEMO04",
+        "DEMO05",
+        "DEMO09"
+      ],
+      "objective": 81.92,
+      "total_cost": 13,
+      "total_capacity": 22,
+      "selected_count": 6,
+      "feasible": true
+    },
+    "enumerated_combinations": 210,
+    "feasible_combinations": 203,
+    "runtime_seconds": 0.001011400017887354
+  },
+  "qubo": {
+    "penalty": 100.65999999999998,
+    "n_qubits": 20,
+    "cost_slack_weights": [
+      1,
+      2,
+      4,
+      8,
+      10
+    ],
+    "capacity_slack_weights": [
+      1,
+      2,
+      4,
+      8,
+      7
+    ]
+  }
+}

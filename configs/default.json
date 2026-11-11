@@ -1,0 +1,8 @@
+{
+  "seed": 42,
+  "cv_folds": 3,
+  "quantum_components": 4,
+  "quantum_reps": 1,
+  "vqc_maxiter": 30,
+  "mode": "full"
+}

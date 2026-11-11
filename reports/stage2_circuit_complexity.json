@@ -1,0 +1,122 @@
+{
+  "standard_p1_seed42": {
+    "qubits": 20,
+    "depth": 66,
+    "size": 535,
+    "gate_counts": {
+      "rz": 310,
+      "rzz": 165,
+      "u2": 20,
+      "rx": 20,
+      "measure": 20
+    }
+  },
+  "standard_p1_seed137": {
+    "qubits": 20,
+    "depth": 66,
+    "size": 535,
+    "gate_counts": {
+      "rz": 310,
+      "rzz": 165,
+      "u2": 20,
+      "rx": 20,
+      "measure": 20
+    }
+  },
+  "standard_p2_seed42": {
+    "qubits": 20,
+    "depth": 106,
+    "size": 1030,
+    "gate_counts": {
+      "rz": 620,
+      "rzz": 330,
+      "u2": 20,
+      "u3": 20,
+      "rx": 20,
+      "measure": 20
+    }
+  },
+  "standard_p2_seed137": {
+    "qubits": 20,
+    "depth": 106,
+    "size": 1030,
+    "gate_counts": {
+      "rz": 620,
+      "rzz": 330,
+      "u2": 20,
+      "u3": 20,
+      "rx": 20,
+      "measure": 20
+    }
+  },
+  "cardinality_p1_seed42": {
+    "qubits": 10,
+    "depth": 7,
+    "size": 37,
+    "gate_counts": {
+      "rxx": 10,
+      "ryy": 10,
+      "measure": 10,
+      "x": 6,
+      "diagonal": 1
+    }
+  },
+  "cardinality_p1_seed137": {
+    "qubits": 10,
+    "depth": 7,
+    "size": 37,
+    "gate_counts": {
+      "rxx": 10,
+      "ryy": 10,
+      "measure": 10,
+      "x": 6,
+      "diagonal": 1
+    }
+  },
+  "cardinality_p2_seed42": {
+    "qubits": 10,
+    "depth": 12,
+    "size": 58,
+    "gate_counts": {
+      "rxx": 20,
+      "ryy": 20,
+      "measure": 10,
+      "x": 6,
+      "diagonal": 2
+    }
+  },
+  "cardinality_p2_seed137": {
+    "qubits": 10,
+    "depth": 12,
+    "size": 58,
+    "gate_counts": {
+      "rxx": 20,
+      "ryy": 20,
+      "measure": 10,
+      "x": 6,
+      "diagonal": 2
+    }
+  },
+  "formulation": {
+    "decision_qubits": 10,
+    "cost_slack_qubits": 5,
+    "capacity_slack_qubits": 5,
+    "standard_total_qubits": 20,
+    "cost_slack_weights": [
+      1,
+      2,
+      4,
+      8,
+      10
+    ],
+    "capacity_slack_weights": [
+      1,
+      2,
+      4,
+      8,
+      7
+    ],
+    "penalty": 64.28244844572103,
+    "cardinality_bad_weight_probability": 0.0
+  }
+}

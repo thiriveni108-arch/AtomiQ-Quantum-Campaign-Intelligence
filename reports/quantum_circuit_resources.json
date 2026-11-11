@@ -1,0 +1,308 @@
+{
+  "environment": {
+    "python": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "qiskit": "2.6.2",
+    "qiskit_aer": "0.18.2",
+    "pennylane": "0.45.1",
+    "torch": "2.15.0+cpu"
+  },
+  "circuits": [
+    {
+      "name": "QSVC ZZ feature map",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 4,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 11,
+      "transpiled_depth": 11,
+      "one_qubit_gate_counts": {
+        "p": 7,
+        "h": 4
+      },
+      "two_qubit_gate_counts": {
+        "cx": 6
+      },
+      "total_transpiled_operations": 17,
+      "swap_count": 0,
+      "shots": "varies by experiment",
+      "seed": 42
+    },
+    {
+      "name": "VQC feature map + ansatz",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 4,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 15,
+      "transpiled_depth": 15,
+      "one_qubit_gate_counts": {
+        "ry": 8,
+        "p": 7,
+        "h": 4
+      },
+      "two_qubit_gate_counts": {
+        "cx": 9
+      },
+      "total_transpiled_operations": 28,
+      "swap_count": 0,
+      "shots": "varies by experiment",
+      "seed": 42
+    },
+    {
+      "name": "Stage 3 probability circuit",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 6,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 2,
+      "transpiled_depth": 2,
+      "one_qubit_gate_counts": {
+        "ry": 6
+      },
+      "two_qubit_gate_counts": {},
+      "total_transpiled_operations": 12,
+      "swap_count": 0,
+      "shots": "varies by experiment",
+      "seed": 42
+    },
+    {
+      "name": "standard_p1_seed42",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 20,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 66,
+      "transpiled_depth": 66,
+      "one_qubit_gate_counts": "See gate_counts",
+      "two_qubit_gate_counts": "See gate_counts",
+      "total_transpiled_operations": 535,
+      "swap_count": 0,
+      "gate_counts": {
+        "rz": 310,
+        "rzz": 165,
+        "u2": 20,
+        "rx": 20,
+        "measure": 20
+      },
+      "shots": 128,
+      "seed": "42 or 137"
+    },
+    {
+      "name": "standard_p1_seed137",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 20,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 66,
+      "transpiled_depth": 66,
+      "one_qubit_gate_counts": "See gate_counts",
+      "two_qubit_gate_counts": "See gate_counts",
+      "total_transpiled_operations": 535,
+      "swap_count": 0,
+      "gate_counts": {
+        "rz": 310,
+        "rzz": 165,
+        "u2": 20,
+        "rx": 20,
+        "measure": 20
+      },
+      "shots": 128,
+      "seed": "42 or 137"
+    },
+    {
+      "name": "standard_p2_seed42",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 20,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 106,
+      "transpiled_depth": 106,
+      "one_qubit_gate_counts": "See gate_counts",
+      "two_qubit_gate_counts": "See gate_counts",
+      "total_transpiled_operations": 1030,
+      "swap_count": 0,
+      "gate_counts": {
+        "rz": 620,
+        "rzz": 330,
+        "u2": 20,
+        "u3": 20,
+        "rx": 20,
+        "measure": 20
+      },
+      "shots": 128,
+      "seed": "42 or 137"
+    },
+    {
+      "name": "standard_p2_seed137",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 20,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 106,
+      "transpiled_depth": 106,
+      "one_qubit_gate_counts": "See gate_counts",
+      "two_qubit_gate_counts": "See gate_counts",
+      "total_transpiled_operations": 1030,
+      "swap_count": 0,
+      "gate_counts": {
+        "rz": 620,
+        "rzz": 330,
+        "u2": 20,
+        "u3": 20,
+        "rx": 20,
+        "measure": 20
+      },
+      "shots": 128,
+      "seed": "42 or 137"
+    },
+    {
+      "name": "cardinality_p1_seed42",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 10,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 7,
+      "transpiled_depth": 7,
+      "one_qubit_gate_counts": "See gate_counts",
+      "two_qubit_gate_counts": "See gate_counts",
+      "total_transpiled_operations": 37,
+      "swap_count": 0,
+      "gate_counts": {
+        "rxx": 10,
+        "ryy": 10,
+        "measure": 10,
+        "x": 6,
+        "diagonal": 1
+      },
+      "shots": 128,
+      "seed": "42 or 137"
+    },
+    {
+      "name": "cardinality_p1_seed137",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 10,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 7,
+      "transpiled_depth": 7,
+      "one_qubit_gate_counts": "See gate_counts",
+      "two_qubit_gate_counts": "See gate_counts",
+      "total_transpiled_operations": 37,
+      "swap_count": 0,
+      "gate_counts": {
+        "rxx": 10,
+        "ryy": 10,
+        "measure": 10,
+        "x": 6,
+        "diagonal": 1
+      },
+      "shots": 128,
+      "seed": "42 or 137"
+    },
+    {
+      "name": "cardinality_p2_seed42",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 10,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 12,
+      "transpiled_depth": 12,
+      "one_qubit_gate_counts": "See gate_counts",
+      "two_qubit_gate_counts": "See gate_counts",
+      "total_transpiled_operations": 58,
+      "swap_count": 0,
+      "gate_counts": {
+        "rxx": 20,
+        "ryy": 20,
+        "measure": 10,
+        "x": 6,
+        "diagonal": 2
+      },
+      "shots": 128,
+      "seed": "42 or 137"
+    },
+    {
+      "name": "cardinality_p2_seed137",
+      "framework": "Qiskit",
+      "backend": "AerSimulator (local)",
+      "logical_qubits": 10,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 12,
+      "transpiled_depth": 12,
+      "one_qubit_gate_counts": "See gate_counts",
+      "two_qubit_gate_counts": "See gate_counts",
+      "total_transpiled_operations": 58,
+      "swap_count": 0,
+      "gate_counts": {
+        "rxx": 20,
+        "ryy": 20,
+        "measure": 10,
+        "x": 6,
+        "diagonal": 2
+      },
+      "shots": 128,
+      "seed": "42 or 137"
+    },
+    {
+      "name": "pennylane_qsvc",
+      "framework": "PennyLane",
+      "backend": "default.qubit/lightning.qubit",
+      "logical_qubits": 4,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 11,
+      "transpiled_depth": "N/A (framework simulator; no target transpilation)",
+      "gate_counts": {
+        "Hadamard": 4,
+        "PhaseShift": 7,
+        "CNOT": 6
+      },
+      "total_gates": 17,
+      "swap_count": "N/A",
+      "shots": "analytic or experiment-specific",
+      "seed": "42/137 depending experiment"
+    },
+    {
+      "name": "pennylane_trainable_d1",
+      "framework": "PennyLane",
+      "backend": "default.qubit/lightning.qubit",
+      "logical_qubits": 4,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 7,
+      "transpiled_depth": "N/A (framework simulator; no target transpilation)",
+      "gate_counts": {},
+      "total_gates": 19,
+      "swap_count": "N/A",
+      "shots": "analytic or experiment-specific",
+      "seed": "42/137 depending experiment"
+    },
+    {
+      "name": "pennylane_trainable_d2",
+      "framework": "PennyLane",
+      "backend": "default.qubit/lightning.qubit",
+      "logical_qubits": 4,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 13,
+      "transpiled_depth": "N/A (framework simulator; no target transpilation)",
+      "gate_counts": {},
+      "total_gates": 34,
+      "swap_count": "N/A",
+      "shots": "analytic or experiment-specific",
+      "seed": "42/137 depending experiment"
+    },
+    {
+      "name": "pennylane_reuploading",
+      "framework": "PennyLane",
+      "backend": "default.qubit/lightning.qubit",
+      "logical_qubits": 4,
+      "physical_qubits": "N/A (simulator)",
+      "original_depth": 12,
+      "transpiled_depth": "N/A (framework simulator; no target transpilation)",
+      "gate_counts": {},
+      "total_gates": 24,
+      "swap_count": "N/A",
+      "shots": "analytic or experiment-specific",
+      "seed": "42/137 depending experiment"
+    }
+  ]
+}

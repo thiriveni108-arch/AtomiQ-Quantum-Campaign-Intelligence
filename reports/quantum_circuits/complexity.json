@@ -1,0 +1,61 @@
+{
+  "qiskit": {
+    "feature_map": {
+      "qubits": 4,
+      "depth": 11,
+      "size": 17,
+      "gate_counts": {
+        "u": 11,
+        "cx": 6
+      }
+    },
+    "ansatz": {
+      "qubits": 4,
+      "depth": 5,
+      "size": 11,
+      "gate_counts": {
+        "r": 8,
+        "cx": 3
+      }
+    },
+    "combined": {
+      "qubits": 4,
+      "depth": 15,
+      "size": 28,
+      "gate_counts": {
+        "u": 11,
+        "cx": 9,
+        "r": 8
+      }
+    }
+  },
+  "pennylane_qsvc": {
+    "qubits": 4,
+    "depth": 11,
+    "gates": 17,
+    "counts": {
+      "Hadamard": 4,
+      "PhaseShift": 7,
+      "CNOT": 6
+    },
+    "trainable_parameters": 0
+  },
+  "pennylane_trainable_d1": {
+    "qubits": 4,
+    "depth": 7,
+    "gates": 19,
+    "trainable_parameters": 8
+  },
+  "pennylane_trainable_d2": {
+    "qubits": 4,
+    "depth": 13,
+    "gates": 34,
+    "trainable_parameters": 16
+  },
+  "pennylane_reuploading": {
+    "qubits": 4,
+    "depth": 12,
+    "gates": 24,
+    "trainable_parameters": 24
+  }
+}
